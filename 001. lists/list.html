@@ -1,0 +1,54 @@
+<!-- This example demostrates how to use v-for directive
+to render a list of people names, directives v-model, v-on, and v-text
+are illustrated.
+Directives: Are properties prefixed with v-, and  are used to indeicate
+vue to aply special reactive behavior to de DOM -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lists</title>
+</head>
+<body>
+    <div id="main">
+        <ul>
+            <!-- Display the content of the people array each as an item
+            into a li. {{item}} could be could be replaced by v-text="item"
+            both are shown here -->
+            <li v-for="item in people" v-text="item">{{item}}</li>
+        </ul>
+        <!-- the input content is kept in the "name" variable.
+            When enter key ups, execute addName function -->
+        <input type="text" v-model="name" v-on:keyup.enter="addName">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        /* The Vue object */
+        var app = new Vue({
+            // Where the entire app will reside
+            el:"#main",
+            // the data
+            data:{
+                // array that contains the people names
+                people:["Augusto", "Marcos", "Diana", "Juan", "Abraham"]
+            },
+            // Used to store the content (value) of the input
+            name:"",
+            // The collection of functions
+            methods:{
+                // Called when enter key ups
+                addName: function(){
+                    // Push (adds) the value of name in the people array
+                    this.people.push(this.name)
+                    // since the input has v-model and the reactive behavior
+                    // This will sets an empty string to the input 
+                    this.name = ""
+                }
+            }
+        });
+    </script>
+</body>
+</html>
