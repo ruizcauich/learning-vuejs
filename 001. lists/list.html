@@ -16,8 +16,9 @@ vue to aply special reactive behavior to de DOM -->
         <ul>
             <!-- Display the content of the people array each as an item
             into a li. {{item}} could be could be replaced by v-text="item"
-            both are shown here -->
-            <li v-for="item in people" v-text="item">{{item}}</li>
+            both are shown here. Directive v-bind used to chage atribute title,
+            this could be with a vue object atribute instead of item -->
+            <li v-for="item in people" v-text="item" v-bind:title="'You are hover ' + item">{{item}}</li>
         </ul>
         <!-- the input content is kept in the "name" variable.
             When enter key ups, execute addName function -->
