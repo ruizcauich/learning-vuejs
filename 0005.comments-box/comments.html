@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- The CSS Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <title>Comments box</title>
+</head>
+<body>
+    <div id="app">
+        <h1 class="title is-1">Events</h1>
+        <section class="section">
+            <header>
+                <h2 class="title is-2">Comments box</h2>
+            </header>
+            <div class="columns">
+                <!-- Bulma Box containing the form -->
+                <div class="box has-text-centered column is-6 is-offset-one-quarter has-background-info">
+                    <!-- Using the v-on directive, executes 'submitComment when user submits the form-->
+                    <form action="" v-on:submit.prevent="submitComment">
+                        <div class="field">
+                            <!-- If no cooment yet -->
+                            <label v-if="!comment" class="label">
+                                Write a comment!
+                            </label>
+                            <!-- There's actually somthing written -->
+                            <label v-else class="label">
+                                Press Enter or click send to submit your comment
+                            </label>
+                        </div>
+                        <!-- Field with addons -->
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <!-- v-model directive to bind this input -->
+                                <input v-model="comment" type="text" class="input is-medium is-rounded">
+                            </div>
+                            <div class="control">
+                                <button class="button is-link is-medium is-rounded" type="submit">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+    
+                </div>
+            </div>
+            <!-- Comments container -->
+            <div class="container is-fluid">
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half">
+                        <!-- v-for directive to render the list as bulma boxes -->
+                        <div v-for="item in comments" class="box" >
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-64x64">
+                                        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                    </figure>
+                                </div>
+                                <div class="media-content" v-text="item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+        
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="vue-app.js"></script>
+</body>
+</html>
