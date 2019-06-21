@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title>Directivas</title>
+</head>
+<body>
+    <main id="app">
+        <section class="container">
+            <h1>Directivas</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>v-show</h2>
+                </div>
+                <div class="col-sm-5">
+                    <!-- v-model is used to bind the input to email data -->
+                    <input class="form-control" type="text" v-model="email" >
+                </div>
+                <!-- Directive v-show, shows a tag depending on a condition
+                Vue will always render the element, so it will be aleays present on the 
+                DOM, vue only toggles the display CSS propery for the element with v-show    -->
+                <div class="col-sm-1">
+                    <!-- Show if email has data -->
+                    <input v-show="email" class="btn btn-primary" type="button" value="enviar" >
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>v-if</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <!-- Directive v-if, v-else-if, v-else
+                     When you want affected more than one tag (a block) use <template>
+                    The template tag wont be rendered, just its conent. 
+                    The v-if directive renders only when the condition is true, so if the
+                    initial value is False, this means the render cost is lower -->
+                    <template v-if="!message">
+                        <h3 >Write a suggestion</h3>
+                        <p>The support team responds in less than 24 hours</p>
+                        <p>You can contact us on twitter</p>
+                    </template>
+                    <h3 v-else >Press enter to send</h3>
+                    <textarea v-model="message" id="" rows="3">
+                    </textarea>
+                </div>
+                <div class="col-sm-7">
+                    <h3>JSON</h3>
+                    <pre>
+                        {{ $data }}
+                    </pre>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="vue_app.js"></script>
+</body>
+</html>

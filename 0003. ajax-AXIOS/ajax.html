@@ -85,9 +85,11 @@
                 getUsers:function(){
                     // Calling method get, using axios
                     axios.get(urlUsers).then(response=>{
+                        console.log(response)
                         this.list = response.data.results
                     })
                     axios.get(urlUsers2).then(response=>{
+                        console.log(response)
                         this.list2 = response.data
                     })
                 }
