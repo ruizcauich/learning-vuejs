@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        details{
+            border: 2px #e9e9e9 solid;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 5px 5px 5px #acacac;
+            margin: 10px 5px
+        }
+        details>pre{
+            max-height: 300px;
+            overflow: scroll
+        }
+    </style>
+    <title>Using AJAX with Vue JS</title>
+</head>
+<body>
+    <div id="main">
+        <div class="container">
+            <h1>VueJS and AJAX</h1>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>List</h2>
+                    <ul class="list-group">
+                        <li v-for="user in list" class="list-group-item">
+                            {{user.name.title}}. {{user.name.first}} {{user.name.last}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-8">
+                    <h2>Json</h2>
+                    <details>
+                        <summary>Click to display</summary>
+                        <pre>
+                            {{ $data.list }}
+                        </pre>
+                    </details>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>List</h2>
+                    <ul class="list-group">
+                        <li v-for="user in list2" class="list-group-item">
+                           {{user.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-8">
+                    <h2>Json</h2>
+                    <details>
+                        <summary>Click to display</summary>
+                        <pre>
+                            {{ $data.list2 }}
+                        </pre>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script>
+        var urlUsers = 'https://randomuser.me/api/?results=5'
+        var urlUsers2 = 'https://jsonplaceholder.typicode.com/users'
+        var app = new Vue({
+            el:"#main",
+            // Created is part of the VueJs life cycle
+            created:function(){
+                // Called when app is created to retrieve data from de web service
+                this.getUsers()
+            },
+            data:{
+                list:[],
+                list2:[]
+            },
+            methods:{
+                getUsers:function(){
+                    this.$http.get(urlUsers).then((response)=>{
+                        this.list = response.body.results
+                    })
+
+                    this.$http.get(urlUsers2).then((response)=>{
+                        this.list2 = response.body
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>
