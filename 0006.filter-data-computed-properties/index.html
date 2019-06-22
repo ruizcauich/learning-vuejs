@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- The CSS Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <section class="section">
+            <header>
+                <h1></h1>
+            </header>
+            <div class="columns">
+                <div class="column is-4">
+                    <!-- If ther's no users show this button -->
+                    <button v-if="!users.length" v-on:click="getUsers" class="button is-primary">
+                        Feed user list
+                    </button>
+                    <!-- Otherwise this list -->
+                    <div v-else  class="list is-hoverable">
+                        <a class="list-item">
+                            <!-- Input used to write text to filter names -->
+                            <span class="control">
+                                <!-- binded to username variable -->
+                                <input v-model="username" type="text" class="input" placeholder="Find">
+                            </span>
+                        </a>
+                        <!-- This for iterates over a computed property to list
+                        the matching result -->
+                        <a v-for="user in searchUser" class="list-item">{{user.name}}</a>
+                    </div>
+                </div>
+                <!-- Tho show the JSON -->
+                <div class="column is-8">
+                    <details class="box">
+                        <summary>Click to show JSON</summary>
+
+                        <pre class="code">
+                            {{ users }}
+                        </pre>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="vue-app.js"></script>
+</body>
+</html>
