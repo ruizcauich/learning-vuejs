@@ -2,6 +2,8 @@ let app = new Vue({
     el:'#app',
     data:{
         email:'',
-        message:''
+        message:'',
+        fondo: '',
+        color:false
     }
 })

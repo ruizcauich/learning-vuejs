@@ -59,6 +59,36 @@
                 </div>
             </div>
         </section>
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>v-bind:class | :class</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <!-- You can use a string btwen simple quotes like 'text-primary'
+                    or if you want to include more classes yu can use an array.
+                    Js Objects are able to include too, this means that the precense of
+                    'text-primary' is contitionated by the  truthiness value of color.
+                    An Object can be also defined in data, or some value for :class could also be
+                    a computed porperty that alsa can return an object.
+                    MORE INFO IN  https://vuejs.org/v2/guide/class-and-style.html-->
+                   <p :class="[{'text-primary': color}, fondo]">
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                       Omnis, blanditiis quidem doloribus asperiores fuga quos
+                        tempora dicta, libero hic dolore expedita similique officiis
+                         ullam animi ut cum earum ea impedit?
+                   </p>
+                   <p v-show="!fondo" :class="'bg-info'">
+                    Write: bg-[danger, primary, success, info, warning]
+                   </p>
+                   <input type="text" class="form-control" v-model="fondo">
+                   <label ><input type="checkbox" class="form-check-input" v-model="color">Change text color</label>
+                </div>
+                
+            </div>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
