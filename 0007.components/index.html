@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Components</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <greeting></greeting>
+        <h1>{{greeting}}</h1>
+
+        <counter></counter>
+        <!--the components are independent of each other -->
+        <counter></counter>
+    </div>
+    
+    <script src="greeting.js"></script>
+    <script src="counter.js"></script>
+    <script src="vue-app.js"></script>
+    
+</body>
+</html>
